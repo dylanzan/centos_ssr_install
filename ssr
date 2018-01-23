@@ -1,0 +1,88 @@
+#!/bin/bash
+# chkconfig: 2345 90 10
+# description: start or stop the ShadowsocksR server
+#
+### BEGIN INIT INFO
+# Provides: ShadowsocksR
+# Required-Start: $network $syslog
+# Required-Stop: $network
+# Default-Start: 2 3 4 5
+# Default-Stop: 0 1 6
+# Description: Start or stop the ShadowsocksR server
+### END INIT INFO
+
+# Author: www.91yun.org
+
+name=ShadowsocksR
+BIN=#ssrdir#
+conf=/etc/shadowsocks.json
+
+start(){
+    bash ${BIN}logrun.sh
+    RETVAL=$?
+    if [ "$RETVAL" = "0" ]; then
+        echo "$name start success"
+    else
+        echo "$name start failed"
+    fi
+}
+
+stop(){
+	bash ${BIN}stop.sh
+}
+
+status(){
+	bash ${BIN}tail.sh
+}
+
+adduser(){
+	bash ${BIN}ssr.sh adduser
+}
+
+deluser(){
+	bash ${BIN}ssr.sh deluser
+}
+
+update(){
+	bash ${BIN}ssr.sh update
+}
+
+
+uninstall(){
+	bash ${BIN}ssr.sh uninstall
+}
+
+case "$1" in
+'start')
+    start
+    ;;
+'stop')
+    stop
+    ;;
+'status')
+    status
+    ;;
+'adduser')
+    adduser
+    ;;
+'deluser')
+    deluser
+    ;;
+'update')
+    update
+    ;;	
+'uninstall')
+    uninstall
+    ;;
+'restart')
+    stop
+    start
+    RETVAL=$?
+    ;;
+*)
+    echo "Usage: $0 { start | stop | restart | status | adduser | deluser | update | uninstall }"
+    RETVAL=1
+    ;;
+esac
+exit $RETVAL
+
