@@ -53,7 +53,7 @@ wget -N --no-check-certificate https://raw.githubusercontent.com/zanshichun/cent
 
 大家可以自己视情况修改。
 
-## 一键安装最新内核并开启BBR脚方法（感谢@秋水逸冰）：
+## 一键安装最新内核并开启BBR方法（感谢@秋水逸冰）：
 
 使用 root 用户登录，运行以下命令：
 ```
