@@ -53,13 +53,11 @@ wget -N --no-check-certificate https://raw.githubusercontent.com/zanshichun/cent
 
 大家可以自己视情况修改。
 
-## BBR-TCP使用方法：
+## 一键安装最新内核并开启BBR脚方法（感谢@秋水逸冰）：
 
 使用 root 用户登录，运行以下命令：
 ```
-wget --no-check-certificate https://raw.githubusercontent.com/zanshichun/across/master/bbr.sh
-chmod +x bbr.sh
-./bbr.sh
+wget --no-check-certificate https://github.com/teddysun/across/raw/master/bbr.sh && chmod +x bbr.sh && ./bbr.sh
 ```
 
 安装完成后，脚本会提示需要重启 VPS ，输入 y 并回车后重启。
@@ -68,7 +66,7 @@ chmod +x bbr.sh
 ```
 uname -r
 ```
-查看内核版本，含有 4.10 就表示 OK 了
+查看内核版本，含有 4.13 就表示 OK 了
 
 ```
 sysctl net.ipv4.tcp_available_congestion_control
@@ -94,4 +92,4 @@ lsmod | grep bbr
 返回值有 tcp_bbr 模块即说明 bbr 已启动。
 
 
-本仓库仅是个人兴趣爱好、科研开发，方便，而设计，不可投入商用！遵守法律，人人有责！
+本仓库仅是个人兴趣爱好、为学习科研开发技术，方便，而设计，不可投入商用！遵守法律，人人有责！
